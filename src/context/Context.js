@@ -9,11 +9,14 @@ const Context = ({ children }) => {
       photoUrl: "",
     },
   ]);
+  const [test, setTest] = useState([]);
+
   return (
     <ContexStore.Provider
       value={{
         user,
         setUser,
+        test,
       }}
     >
       {children}

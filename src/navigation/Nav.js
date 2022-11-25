@@ -19,9 +19,6 @@ import Post_focused from "../../assets/svg/post_a.svg";
 import Room_outline from "../../assets/svg/room_not.svg";
 import Room_focused from "../../assets/svg/room_a.svg";
 
-//profile
-import Profile_outline from "../../assets/svg/profile_not.svg";
-import Profile_focused from "../../assets/svg/profile_a.svg";
 
 const Nav = ({ active }) => {
   const navigation = useNavigation();
@@ -43,8 +40,11 @@ const Nav = ({ active }) => {
   };
   return (
     <View style={styles.nav}>
-      <Pressable style={styles.pressable} onPress={() => redirect("Mero Room")}>
-        {active === "Mero Room" ? <Home_focused /> : <Home_outline />}
+      <Pressable
+        style={styles.pressable}
+        onPress={() => redirect("Room-Finder")}
+      >
+        {active === "Room-Finder" ? <Home_focused /> : <Home_outline />}
       </Pressable>
       <Pressable style={icon.btn} onPress={() => redirect("Explore")}>
         {active === "Explore" ? <Explore_focused /> : <Explore_outline />}
@@ -54,9 +54,6 @@ const Nav = ({ active }) => {
       </Pressable>
       <Pressable style={icon.btn} onPress={() => redirect("MyRoom")}>
         {active === "MyRoom" ? <Room_focused /> : <Room_outline />}
-      </Pressable>
-      <Pressable style={icon.btn} onPress={() => redirect("Profile")}>
-        {active === "Profile" ? <Profile_focused /> : <Profile_outline />}
       </Pressable>
     </View>
   );

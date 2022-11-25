@@ -123,7 +123,7 @@ export default function Route() {
               fontFamily: "888",
             },
           }}
-          name="Mero Room"
+          name="Room-Finder"
           component={Home}
         />
         <Stack.Screen

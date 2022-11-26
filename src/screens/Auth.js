@@ -2,7 +2,7 @@ import { View, Text, Image, Pressable } from "react-native";
 import React, { useState } from "react";
 import { styles } from "../styles/auth/auth_design";
 import * as Google from "expo-google-app-auth";
-import { FB_KEY, GOOGLE_KEY } from "@env";
+import {GOOGLE_KEY} from "@env";
 import { useNavigation } from "@react-navigation/native";
 import {
   collection,

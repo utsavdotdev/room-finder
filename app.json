@@ -1,31 +1,26 @@
 {
   "expo": {
-    "name": "room-finder",
-    "slug": "realEastate",
+    "name": "Room finder",
+    "slug": "roomfinder",
+    "privacy": "public",
+    "description": "The application which makes the connection between room owner and room seecker. The main motive of the app is to solve the problem of layman people who suffers while searching for the room. 😂\n -Let's  Find the best room for next migration !!",
     "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
+    "orientation": "default",
+    "icon": "./assets/img/logo.png",
     "updates": {
       "fallbackToCacheTimeout": 0
+    },
+    "splash": {
+      "image": "./assets/img/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#fff"
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
+      "package": "com.rajeshkhadka200.mero_room"
     }
   }
 }

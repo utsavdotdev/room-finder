@@ -38,7 +38,6 @@ import AppLoading from "expo-app-loading";
 import Search from "../screens/Search";
 import Auth from "../screens/Auth";
 import Post from "../screens/Post";
-import Notif from "../screens/Notif";
 import Home from "../screens/Home";
 import Explore from "../screens/Explore";
 import Myroom from "../screens/Myroom";

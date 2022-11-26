@@ -1,7 +1,19 @@
 import { View, Text, Image, Pressable } from "react-native";
 import React, { useState } from "react";
 import { styles } from "../styles/auth/auth_design";
+import * as Google from "expo-google-app-auth";
+import { FB_KEY, GOOGLE_KEY } from "@env";
 import { useNavigation } from "@react-navigation/native";
+import {
+  collection,
+  addDoc,
+  query,
+  where,
+  getDocs,
+  onSnapshot,
+} from "firebase/firestore";
+import { db } from "../../config/firebase.js";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ContexStore } from "../context/Context";
 import Loading from "../components/Global/Loading";
 
@@ -13,13 +25,76 @@ const Auth = () => {
     return navigation.navigate("Mero Room");
   }
   const fetchUser = async () => {
-    // fetch the login user data from the firebase
+    try {
+      const token = await AsyncStorage.getItem("auth_token");
+      const q = query(
+        collection(db, "users"),
+        where("auth_token", "==", token)
+      );
+      onSnapshot(q, (snapshot) => {
+        snapshot.docs.forEach((doc) => {
+          setUser([{ ...doc.data(), oprn_id: doc.id }]);
+        });
+      });
+    } catch (error) {
+      console.log("err while geting data", error);
+    }
   };
-  const storeData = async () => {
-    // check if data is already exist in db, and perform login and register
+  const storeData = async ({ id, email, name, photoUrl }) => {
+    try {
+      setloading(true);
+      let existing = [];
+      //check if user is new or not
+      const q = query(collection(db, "users"), where("email", "==", email));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        existing.push(doc.data());
+      });
+      if (existing.length > 0) {
+        try {
+          await AsyncStorage.setItem("auth_token", id);
+          fetchUser();
+          setloading(false);
+          return navigation.navigate("Mero Room");
+        } catch (err) {
+          console.log("err while seting login ", err);
+        }
+      }
+      await addDoc(collection(db, "users"), {
+        auth_token: id,
+        email,
+        name,
+        photoUrl,
+        fav: [],
+      });
+      try {
+        await AsyncStorage.setItem("auth_token", id);
+        fetchUser();
+        setloading(false);
+        return navigation.navigate("Mero Room");
+      } catch (err) {
+        console.log("err while seting reg", err);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
+
   const googleLogin = async () => {
-    // perform google login
+    try {
+      // setloading(true);
+      const result = await Google.logInAsync({
+        androidClientId: GOOGLE_KEY,
+      });
+      if (result.type == "success") {
+        storeData(result.user);
+      }
+      if (result.type === "cancel") {
+        setloading(false);
+      }
+    } catch ({ message }) {
+      alert("err from google" + message);
+    }
   };
 
   return (

@@ -12,12 +12,12 @@ import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { ContexStore } from "../../context/Context";
 
+// from notif icons to filter
 const HomeHeader = () => {
   const { test } = useContext(ContexStore);
   const [search, setSearch] = useState("");
-  const uniqueDistrict = [...new Set(test?.map((item) => item.district))];
-
   const navigation = useNavigation();
+  const uniqueDistrict = [...new Set(test?.map((item) => item.district))];
 
   const Search = () => {
     if (search === "") {

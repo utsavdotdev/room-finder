@@ -30,7 +30,7 @@ const Home = ({ route }) => {
             <HomeHeader />
             <HomeBody />
           </ScrollView>
-          <Nav active={route.name} />
+          {/* <Nav active={route.name} /> */}
         </SafeAreaView>
       </KeyboardAvoidingView>
     </>

@@ -38,7 +38,6 @@ import AppLoading from "expo-app-loading";
 import Search from "../screens/Search";
 import Auth from "../screens/Auth";
 import Post from "../screens/Post";
-import Notif from "../screens/Notif";
 import Home from "../screens/Home";
 import Explore from "../screens/Explore";
 import Myroom from "../screens/Myroom";
@@ -65,7 +64,6 @@ export default function Route() {
     setloading,
   } = React.useContext(ContexStore);
 
-  const notif = true;
   useEffect(() => {
     LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
   }, []);
@@ -87,17 +85,7 @@ export default function Route() {
 
   const Stack = createNativeStackNavigator();
   //room upload function
-  const pushNotif = async (room_id, address) => {
-    await addDoc(collection(db, "notif"), {
-      room_id,
-      user_id: user[0]?.auth_token,
-      user_name: user[0]?.name,
-      user_profile: user[0]?.photoUrl,
-      address: address,
-      createdAt: moment().format("llll"),
-      timestamp: Date.now(),
-    });
-  };
+
   const upload = async (data, img) => {
     let images_to_push = [];
     let downloadLink = [];
@@ -205,8 +193,6 @@ export default function Route() {
           console.log("err while upload", e);
         });
     });
-    // push notif
-    pushNotif(docRef.id, data.address);
   };
   return (
     <>
@@ -218,17 +204,6 @@ export default function Route() {
             headerRight: () => (
               <>
                 <View style={header.wrapper}>
-                  <TouchableOpacity
-                    onPress={() => navigation.navigate("Notification")}
-                    style={header.headerIcon}
-                  >
-                    <Ionicons
-                      name="notifications-outline"
-                      size={27}
-                      color="#929191"
-                    />
-                    {notif ? <View style={header.dot}></View> : null}
-                  </TouchableOpacity>
                   <TouchableOpacity
                     onPress={() => {
                       if (user?.length === 1) {
@@ -360,13 +335,7 @@ export default function Route() {
           name="Detail"
           component={Detail}
         />
-        <Stack.Screen
-          options={{
-            headerShown: true,
-          }}
-          name="Notification"
-          component={Notif}
-        />
+
         <Stack.Screen
           name="Search"
           component={Search}

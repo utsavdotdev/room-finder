@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "room-finder",
+    "name": "Mero Room",
     "slug": "realEastate",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/img/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",

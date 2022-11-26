@@ -2,7 +2,7 @@ import React from "react";
 import { Alert, Pressable, View, StyleSheet } from "react-native";
 import { styles } from "../styles/Global/nav_design";
 import { useNavigation } from "@react-navigation/native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import {AsyncStorage} from "@react-native-async-storage/async-storage";
 
 //home
 import Home_outline from "../../assets/svg/home_not.svg";
@@ -18,7 +18,6 @@ import Post_focused from "../../assets/svg/post_a.svg";
 //room
 import Room_outline from "../../assets/svg/room_not.svg";
 import Room_focused from "../../assets/svg/room_a.svg";
-
 
 const Nav = ({ active }) => {
   const navigation = useNavigation();
@@ -39,23 +38,25 @@ const Nav = ({ active }) => {
     }
   };
   return (
-    <View style={styles.nav}>
-      <Pressable
-        style={styles.pressable}
-        onPress={() => redirect("Room-Finder")}
-      >
-        {active === "Room-Finder" ? <Home_focused /> : <Home_outline />}
-      </Pressable>
-      <Pressable style={icon.btn} onPress={() => redirect("Explore")}>
-        {active === "Explore" ? <Explore_focused /> : <Explore_outline />}
-      </Pressable>
-      <Pressable style={icon.btn} onPress={() => redirect("Post")}>
-        {active === "Post" ? <Post_focused /> : <Post_outline />}
-      </Pressable>
-      <Pressable style={icon.btn} onPress={() => redirect("MyRoom")}>
-        {active === "MyRoom" ? <Room_focused /> : <Room_outline />}
-      </Pressable>
-    </View>
+    <>
+      <View style={styles.nav}>
+        <Pressable
+          style={styles.pressable}
+          onPress={() => redirect("Room-Finder")}
+        >
+          {active === "Room-Finder" ? <Home_focused /> : <Home_outline />}
+        </Pressable>
+        <Pressable style={icon.btn} onPress={() => redirect("Explore")}>
+          {active === "Explore" ? <Explore_focused /> : <Explore_outline />}
+        </Pressable>
+        <Pressable style={icon.btn} onPress={() => redirect("Post")}>
+          {active === "Post" ? <Post_focused /> : <Post_outline />}
+        </Pressable>
+        <Pressable style={icon.btn} onPress={() => redirect("MyRoom")}>
+          {active === "MyRoom" ? <Room_focused /> : <Room_outline />}
+        </Pressable>
+      </View>
+    </>
   );
 };
 const icon = StyleSheet.create({
@@ -64,4 +65,4 @@ const icon = StyleSheet.create({
   },
 });
 
-export default React.memo(Nav);
+export default Nav;

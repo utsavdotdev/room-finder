@@ -52,11 +52,7 @@ export default function Card({ data, check }) {
             </View>
           </View>
 
-          <AntDesign
-            name={inFav ? "heart" : "hearto"}
-            size={30}
-            color={inFav ? "#E35A5A" : "white"}
-          />
+          <AntDesign name={"hearto"} size={30} color={"white"} />
         </View>
       </View>
     </>

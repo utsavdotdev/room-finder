@@ -19,7 +19,7 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import NoContent from "../Global/NoContent.js";
-import { styles } from "../../styles/details/Detail_Header_design.js";
+import Comment from "./Comment.js";
 const WhiteIcon = ({ text, icon }) => {
   return (
     <>
@@ -86,7 +86,7 @@ const Detail_header = ({ room_id }) => {
             <FlatList
               nestedScrollEnabled={true}
               // viewabilityConfig={viewabilityConfig.current}
-              onViewableItemsChanged={onViewableItemsChanged.current}
+
               showsHorizontalScrollIndicator={false}
               pagingEnabled
               horizontal
@@ -166,6 +166,7 @@ const Detail_header = ({ room_id }) => {
                 </View>
               </View>
             </View>
+            <Comment room_id={room_id} />
           </>
         )}
       </View>

@@ -6,7 +6,7 @@ import {
 } from "react-native-responsive-screen";
 export const styles = StyleSheet.create({
   no_content_con: {
-    flex: 1,
+    flex:1,
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
   text1: {
     fontFamily: "500",
     fontSize: 30,
-    textAlign: "center",
+    textAlign:"center"
   },
   text2: {
     fontFamily: "400",

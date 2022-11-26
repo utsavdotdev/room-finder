@@ -1,8 +1,9 @@
 import { View, Text, FlatList } from "react-native";
 import { styles } from "../../styles/home/home_body_design";
 import { React, useContext } from "react";
-import { ContexStore } from "../../context/Context";
+import { cardData } from "../../../config/api";
 import Card from "../Global/Card";
+import { ContexStore } from "../../context/Context";
 import EmptyComp from "../Global/Empty";
 
 const HomeBody = () => {
@@ -64,4 +65,3 @@ const HomeBody = () => {
 };
 
 export default HomeBody;
-

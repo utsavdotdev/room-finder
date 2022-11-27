@@ -7,7 +7,7 @@ import {
 import React from "react";
 import HomeHeader from "../components/home/HomeHeader";
 import HomeBody from "../components/home/HomeBody";
-import Nav from "../navigation/Nav";
+import Nav from "../navigation/Nav.js";
 
 const Home = ({ route }) => {
   return (
@@ -30,7 +30,7 @@ const Home = ({ route }) => {
             <HomeHeader />
             <HomeBody />
           </ScrollView>
-          {/* <Nav active={route.name} /> */}
+          <Nav active={route.name} />
         </SafeAreaView>
       </KeyboardAvoidingView>
     </>

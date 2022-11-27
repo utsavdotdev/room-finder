@@ -84,6 +84,7 @@ export default function Route() {
   }
 
   const Stack = createNativeStackNavigator();
+  let notif = true;
   //room upload function
 
   const upload = async (data, img) => {
@@ -204,6 +205,17 @@ export default function Route() {
             headerRight: () => (
               <>
                 <View style={header.wrapper}>
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate("Notification")}
+                    style={header.headerIcon}
+                  >
+                    <MaterialIcons
+                      name="logout"
+                      size={22}
+                      color="#000"
+                      // style={{ marginRight: 2 }}
+                    />
+                  </TouchableOpacity>
                   <TouchableOpacity
                     onPress={() => {
                       if (user?.length === 1) {

@@ -51,8 +51,6 @@ export default function Card({ data, check }) {
               <Text style={styles.dec_price}>Rs. {rate}</Text>
             </View>
           </View>
-
-          <AntDesign name={"hearto"} size={30} color={"white"} />
         </View>
       </View>
     </>
